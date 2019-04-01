@@ -8,10 +8,15 @@ The source is released "as is", and Oddlabs will not be available for help build
 
 **If** you know how to code Java, configure ant, use MySQL, and have a **genuine intention** of actually working on the game, you can create an issue for detailed questions about the source.
 
-About this fork
+About the fork yerboygiles stole
 ---------------
 
 I have been working to restore this enjoyable game to working order with modern Java. This has included updating to more recent LWJGL, JInput and OpenAL, removing the need for registration, removing demo mode, removing updater as well as many Java modernizations and cleanups. The ultimate goal is to produce a jar that can be run simply with `java -jar tt.jar` on MacOS X, Linux and Windows.
+
+About the new repo yerboygiles has made
+---------------
+
+The game is able to be run by just command-lining "ant run" in the tt directory. I plan on making textural and unit changes, possibly even trying to create another race throughout my time in college. 
 
 Building
 --------

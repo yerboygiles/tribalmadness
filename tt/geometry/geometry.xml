@@ -404,6 +404,198 @@
 				<texture name="native_warrior_rubber"/>
 			</model>
 		</sprite>
+
+	</group>
+	<group name="japanese">
+		<sprite name="chieftain">
+			<skeleton>japanese/chieftain/japanese_chieftain_skeleton.xml</skeleton>
+			<model r="90" g="60" b="30">
+				japanese/chieftain/japanese_chieftain_mesh.xml
+				<texture name="japanese_chieftain" team="japanese_chieftain_team"/>
+			</model>
+			<model r="90" g="60" b="30">
+				japanese/chieftain/japanese_chieftain_low_poly_mesh.xml
+				<texture name="japanese_chieftain" team="japanese_chieftain_team"/>
+			</model>
+			<animation wpc="1" type="loop">japanese/chieftain/japanese_chieftain_idle.xml</animation>
+			<animation wpc="4" type="loop">japanese/chieftain/japanese_chieftain_run.xml</animation>
+			<animation wpc="1" type="plain">japanese/chieftain/japanese_chieftain_attack.xml</animation>
+			<animation wpc="1" type="plain">japanese/chieftain/japanese_chieftain_die.xml</animation>
+			<animation wpc="1" type="plain">japanese/chieftain/japanese_chieftain_magic.xml</animation>
+		</sprite>
+		<sprite name="peon">
+			<skeleton>japanese/peon/peon_skeleton.xml</skeleton>
+			<model r="90" g="60" b="30">
+				japanese/peon/japanese_peon_mesh.xml
+				<texture name="japanese_peon" team="japanese_peon_team"/>
+			</model>
+			<model r="90" g="60" b="30">
+				japanese/peon/japanese_peon_low_poly_mesh.xml
+				<texture name="japanese_peon" team="japanese_peon_team"/>
+			</model>
+			<animation wpc="1" type="loop">japanese/peon/peon_idle.xml</animation>
+			<animation wpc="3.625" type="loop">japanese/peon/peon_run.xml</animation>
+			<animation wpc="1" type="plain">japanese/peon/peon_attack.xml</animation>
+			<animation wpc="1" type="plain">japanese/peon/peon_die.xml</animation>
+		</sprite>
+		<sprite name="warrior">
+			<skeleton>japanese/warrior/japanese_warrior_skeleton.xml</skeleton>
+			<model r="90" g="60" b="30">
+				japanese/warrior/japanese_warrior_mesh.xml
+				<texture name="japanese_warrior_rock" team="japanese_warrior_rock_team"/>
+				<texture name="japanese_warrior_iron" team="japanese_warrior_iron_team"/>
+				<texture name="japanese_warrior_rubber" team="japanese_warrior_rubber_team"/>
+			</model>
+			<model r="90" g="60" b="30">
+				japanese/warrior/japanese_warrior_low_poly_mesh.xml
+				<texture name="japanese_warrior_rock" team="japanese_warrior_rock_team"/>
+				<texture name="japanese_warrior_iron" team="japanese_warrior_iron_team"/>
+				<texture name="japanese_warrior_rubber" team="japanese_warrior_rubber_team"/>
+			</model>
+			<animation wpc="1" type="loop">japanese/warrior/japanese_warrior_idle.xml</animation>
+			<animation wpc="3.2" type="loop">japanese/warrior/japanese_warrior_run.xml</animation>
+			<animation wpc="1" type="plain">japanese/warrior/japanese_warrior_attack.xml</animation>
+			<animation wpc="1" type="plain">japanese/warrior/japanese_warrior_die.xml</animation>
+		</sprite>
+		<sprite name="rock_resource">
+			<skeleton>japanese/peon/peon_skeleton.xml</skeleton>
+			<model r="90" g="60" b="30">
+				misc/rock_fragment_japanese.xml
+				<texture name="Generator:com.oddlabs.tt.procedural.GeneratorRock"/>
+				<texture name="Generator:com.oddlabs.tt.procedural.GeneratorIron"/>
+			</model>
+			<animation wpc="1" type="loop">japanese/peon/peon_idle.xml</animation>
+			<animation wpc="3.625" type="loop">japanese/peon/peon_run.xml</animation>
+			<animation wpc="1" type="plain">japanese/peon/peon_attack.xml</animation>
+			<animation wpc="1" type="plain">japanese/peon/peon_die.xml</animation>
+		</sprite>
+		<sprite name="wood_resource">
+			<skeleton>japanese/peon/peon_skeleton.xml</skeleton>
+			<model r="90" g="60" b="30">
+				misc/wood_fragment_japanese.xml
+				<texture name="wood_fragments"/>
+			</model>
+			<animation wpc="1" type="loop">japanese/peon/peon_idle.xml</animation>
+			<animation wpc="3.625" type="loop">japanese/peon/peon_run.xml</animation>
+			<animation wpc="1" type="plain">japanese/peon/peon_attack.xml</animation>
+			<animation wpc="1" type="plain">japanese/peon/peon_die.xml</animation>
+		</sprite>
+		<sprite name="rubber_resource">
+			<skeleton>japanese/peon/peon_skeleton.xml</skeleton>
+			<model r="90" g="60" b="30">
+				misc/rubber_fragment_japanese.xml
+				<texture name="chicken"/>
+			</model>
+			<animation wpc="1" type="loop">japanese/peon/peon_idle.xml</animation>
+			<animation wpc="3.625" type="loop">japanese/peon/peon_run.xml</animation>
+			<animation wpc="1" type="plain">japanese/peon/peon_attack.xml</animation>
+			<animation wpc="1" type="plain">japanese/peon/peon_die.xml</animation>
+		</sprite>
+		<sprite name="quarters">
+			<model r="90" g="60" b="30">
+				japanese/quarters/japanese_built_hi.xml
+				<texture name="japanese_building_hi" team="japanese_building_hi_team"/>
+			</model>
+			<model r="90" g="60" b="30">
+				japanese/quarters/japanese_built_lo.xml
+				<texture name="japanese_building_lo" team="japanese_building_lo_team"/>
+			</model>
+		</sprite>
+		<sprite name="quarters_halfbuilt">
+			<model r="90" g="60" b="30">
+				japanese/quarters/japanese_build_hi.xml
+				<texture name="japanese_building_hi" team="japanese_building_hi_team"/>
+			</model>
+			<model r="90" g="60" b="30">
+				japanese/quarters/japanese_build_lo-new.xml
+				<texture name="japanese_building_lo" team="japanese_building_lo_team"/>
+			</model>
+		</sprite>
+		<sprite name="quarters_start">
+			<model r="90" g="60" b="30">
+				japanese/quarters/japanese_start_hi.xml
+				<texture name="japanese_building_hi" team="japanese_building_hi_team"/>
+			</model>
+			<model r="90" g="60" b="30">
+				japanese/quarters/japanese_start_lo.xml
+				<texture name="japanese_building_hi" team="japanese_building_hi_team"/>
+			</model>
+		</sprite>
+		<sprite name="armory">
+			<model r="90" g="60" b="30">
+				japanese/armory/build_armoury_built_hi.xml
+				<texture name="japanese_building_hi" team="japanese_building_hi_team"/>
+			</model>
+			<model r="90" g="60" b="30">
+				japanese/armory/build_armoury_built_lo.xml
+				<texture name="japanese_armoury_lo" team="japanese_armoury_lo_team"/>
+			</model>
+		</sprite>
+		<sprite name="armory_halfbuilt">
+			<model r="90" g="60" b="30">
+				japanese/armory/build_armoury_build_hi.xml
+				<texture name="japanese_building_hi" team="japanese_building_hi_team"/>
+			</model>
+			<model r="90" g="60" b="30">
+				japanese/armory/build_armoury_build_lo.xml
+				<texture name="japanese_armoury_lo" team="japanese_armoury_lo_team"/>
+			</model>
+		</sprite>
+		<sprite name="armory_start">
+			<model r="90" g="60" b="30">
+				japanese/armory/build_armoury_start_hi.xml
+				<texture name="japanese_building_hi" team="japanese_building_hi_team"/>
+			</model>
+			<model r="90" g="60" b="30">
+				japanese/armory/build_armoury_start_lo.xml
+				<texture name="japanese_building_hi" team="japanese_building_hi_team"/>
+			</model>
+		</sprite>
+		<sprite name="tower">
+			<model r="90" g="60" b="30">
+				japanese/tower/japanese_tower_built_hi.xml
+				<texture name="japanese_tower" team="japanese_tower_team"/>
+			</model>
+			<model r="90" g="60" b="30">
+				japanese/tower/japanese_tower_built_lo.xml
+				<texture name="japanese_tower" team="japanese_tower_team"/>
+			</model>
+		</sprite>
+		<sprite name="tower_halfbuilt">
+			<model r="90" g="60" b="30">
+				japanese/tower/japanese_tower_build_hi.xml
+				<texture name="japanese_tower" team="japanese_tower_team"/>
+			</model>
+			<model r="90" g="60" b="30">
+				japanese/tower/japanese_tower_build_lo.xml
+				<texture name="japanese_tower" team="japanese_tower_team"/>
+			</model>
+		</sprite>
+		<sprite name="tower_start">
+			<model r="90" g="60" b="30">
+				japanese/tower/japanese_tower_start_hi.xml
+				<texture name="japanese_tower" team="japanese_tower_team"/>
+			</model>
+			<model r="90" g="60" b="30">
+				japanese/tower/japanese_tower_start_lo.xml
+				<texture name="japanese_tower" team="japanese_tower_team"/>
+			</model>
+		</sprite>
+		<sprite name="rally_point">
+			<model r="90" g="60" b="30">
+				japanese/misc/japanese_rallypoint.xml
+				<texture name="japanese_building_hi" team="japanese_building_hi_team"/>
+			</model>
+		</sprite>
+		<sprite name="spear">
+			<model r="90" g="60" b="30">
+				japanese/warrior/japanese_warrior_spear.xml
+				<texture name="japanese_warrior_rock"/>
+				<texture name="japanese_warrior_iron"/>
+				<texture name="japanese_warrior_rubber"/>
+			</model>
+		</sprite>
+
 	</group>
 	<group name="misc">
 		<sprite name="jungle_tree_crown">

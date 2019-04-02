@@ -593,8 +593,10 @@ public final strictfp class DBInterface {
 					stmt.setString(index++, nick);
 					if (participants[i].getRace() == 0)
 						stmt.setString(index++, "N");
-					else
+					else if(participants[i].getRace()==1)
 						stmt.setString(index++, "V");
+					else
+						stmt.setString(index++, "J");
 			
 					stmt.setInt(index++, participants[i].getTeam());
 				}

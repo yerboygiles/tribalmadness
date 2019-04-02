@@ -38,6 +38,7 @@ public strictfp class Icons {
 	private final IconQuad cheat_icon;
 	private final RaceIcons native_icons;
 	private final RaceIcons viking_icons;
+	private final RaceIcons japanese_icons;
 	private final IconQuad[] watch;
 	private final IconQuad infinite;
 	private final NotifyArrowData notify_arrow_data;
@@ -74,6 +75,7 @@ public strictfp class Icons {
 		String cc_caption = com.oddlabs.tt.util.Utils.getBundleString(bundle, "crackling_cloud", new Object[]{"C"});
 		viking_icons = parseRaceIcons(root, "vikings", tt_caption, rr_caption);
 		native_icons = parseRaceIcons(root, "natives", ss_caption, cc_caption);
+		japanese_icons = parseRaceIcons(root, "japanese", tt_caption, cc_caption);
 		watch = parseWatch(root);
 		infinite = getNamedIconQuad(root, "infinite", texture);
 		notify_arrow_data = parseNotifyArrowData(root);
@@ -124,6 +126,10 @@ public strictfp class Icons {
 
 	public final RaceIcons getNativeIcons() {
 		return native_icons;
+	}
+
+	public final RaceIcons getJapaneseIcons() {
+		return japanese_icons;
 	}
 
 	public final IconQuad[] getHarvestIcon() {

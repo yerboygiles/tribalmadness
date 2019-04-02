@@ -53,9 +53,11 @@ public final strictfp class RacesResources {
 	public final static int TOWER_HIT_POINTS = 100;
 	public final static int VIKING_CHIEFTAIN_HIT_POINTS = 60;
 	public final static int NATIVE_CHIEFTAIN_HIT_POINTS = 40;
+	public final static int JAPANESE_CHIEFTAIN_HIT_POINTS = 50;
 
 	public final static int RACE_NATIVES = 0;
 	public final static int RACE_VIKINGS = 1;
+	public final static int RACE_JAPANESE = 2;
 
 	public final static int NUM_MAGIC = 2;
 	public final static int INDEX_MAGIC_POISON = 0;
@@ -69,7 +71,8 @@ public final strictfp class RacesResources {
 	private final static ResourceBundle bundle = ResourceBundle.getBundle(RacesResources.class.getName());
 	private final static String[] race_names = new String[]{
             Utils.getBundleString(bundle, "natives"),
-            Utils.getBundleString(bundle, "vikings")
+            Utils.getBundleString(bundle, "vikings"),
+            Utils.getBundleString(bundle, "japanese")
     };
 	private final static int MAX_UNIT_RESOURCES = 1;
 
@@ -98,7 +101,7 @@ public final strictfp class RacesResources {
 	private final Race[] races;
 
 	public static boolean isValidRace(int race) {
-		return race == RACE_NATIVES || race == RACE_VIKINGS;
+		return race == RACE_NATIVES || race == RACE_VIKINGS || race == RACE_JAPANESE;
 	}
 
 	private static BuildingTemplate createBuildingTemplate(
@@ -213,6 +216,24 @@ public final strictfp class RacesResources {
 		viking_supply_sprite_lists.put(IronSupply.class, queues.register(viking_rock_sprite, 1));
 		viking_supply_sprite_lists.put(RubberSupply.class, queues.register(viking_rubber_sprite));
 
+		//new japanese race
+		SpriteFile japanese_wood_sprite = new SpriteFile("/geometry/japanese/wood_resource.binsprite",
+																						   Globals.NO_MIPMAP_CUTOFF,
+																						   true, true, true, false);
+		SpriteFile japanese_rubber_sprite = new SpriteFile("/geometry/japanese/rubber_resource.binsprite",
+																						   Globals.NO_MIPMAP_CUTOFF,
+																						   true, true, true, false);
+		ProgressForm.progress(1f/num_progress);
+		SpriteFile japanese_rock_sprite = new SpriteFile("/geometry/japanese/rock_resource.binsprite",
+																						   Globals.NO_MIPMAP_CUTOFF,
+																						   true, true, true, false);
+		ProgressForm.progress(1f/num_progress);
+		Map<Class<? extends Supply>, SpriteKey> japanese_supply_sprite_lists = new HashMap<>();
+		japanese_supply_sprite_lists.put(TreeSupply.class, queues.register(japanese_wood_sprite));
+		japanese_supply_sprite_lists.put(RockSupply.class, queues.register(japanese_rock_sprite));
+		japanese_supply_sprite_lists.put(IronSupply.class, queues.register(japanese_rock_sprite, 1));
+		japanese_supply_sprite_lists.put(RubberSupply.class, queues.register(japanese_rubber_sprite));
+
 
 		smoke_textures[0] = queues.registerTexture(new GeneratorSmoke(), 0);
 		damage_smoke_textures[0] = queues.registerTexture(new GeneratorDamageSmoke(), 0);
@@ -281,6 +302,9 @@ public final strictfp class RacesResources {
 		Audio death_viking2_sound = (Audio)Resources.findResource(new AudioFile("/sfx/death_viking_warrior2.ogg"));
 		Audio death_native1_sound = (Audio)Resources.findResource(new AudioFile("/sfx/death_native_warrior1.ogg"));
 		Audio death_native2_sound = (Audio)Resources.findResource(new AudioFile("/sfx/death_native_warrior2.ogg"));
+		Audio death_japanese1_sound = (Audio)Resources.findResource(new AudioFile("/sfx/death_native_warrior1.ogg"));
+		Audio death_japanese2_sound = (Audio)Resources.findResource(new AudioFile("/sfx/death_native_warrior2.ogg"));
+
 
 		Audio axe_throw_sound = (Audio)Resources.findResource(new AudioFile("/sfx/weapon_axe.ogg"));
 		Audio spear_throw_sound = (Audio)Resources.findResource(new AudioFile("/sfx/weapon_spear.ogg"));
@@ -453,17 +477,61 @@ public final strictfp class RacesResources {
 				.95f, 0f, 13f,
 				0f, 0f, 0f,
 				Utils.getBundleString(bundle, "tower"));
+				BuildingTemplate japanese_quarters_template = createBuildingTemplate(
+						queues,
+						Race.BUILDING_QUARTERS,
+						"/geometry/japanese/quarters.binsprite",
+						4f, 8f,
+						"/geometry/japanese/quarters_halfbuilt.binsprite",
+						4f, 6f,
+						"/geometry/japanese/quarters_start.binsprite",
+						5f, 1f,
+						16f, .004f, QUARTERS_SIZE, 6f, 9f, 30, QUARTERS_HIT_POINTS,
+						new ReproduceUnitContainerFactory(),
+						new Abilities(Abilities.REPRODUCE | Abilities.RALLY_TO | Abilities.TARGET),
+						new float[]{0f, 1f, 3f}, 0f, 6f,
+						-1.15f, -.77f, 11f,
+						0f, 0f, 0f,
+						Utils.getBundleString(bundle, "quarters"));
+				ProgressForm.progress(1f/num_progress);
+				BuildingTemplate japanese_armory_template = createBuildingTemplate(
+						queues,
+						Race.BUILDING_ARMORY,
+						"/geometry/japanese/armory.binsprite",
+						4f, 8f,
+						"/geometry/japanese/armory_halfbuilt.binsprite",
+						4f, 6f,
+						"/geometry/japanese/armory_start.binsprite",
+						5f, 1f,
+						16f, .004f, ARMORY_SIZE, 6f, 9f, 30, ARMORY_HIT_POINTS,
+						new WorkerUnitContainerFactory(),
+						new Abilities(Abilities.SUPPLY_CONTAINER | Abilities.BUILD_ARMIES | Abilities.RALLY_TO | Abilities.TARGET),
+						new float[]{0f, 1f, 3f}, 0f, 6f,
+						0f, -.4f, 12f,
+						0f, -1f, 11.5f,
+						Utils.getBundleString(bundle, "armory"));
+				ProgressForm.progress(1f/num_progress);
+				BuildingTemplate japanese_tower_template = createBuildingTemplate(
+						queues,
+						Race.BUILDING_TOWER,
+						"/geometry/japanese/tower.binsprite",
+						1f, 14f,
+						"/geometry/japanese/tower_halfbuilt.binsprite",
+						1f, 14f,
+						"/geometry/japanese/tower_start.binsprite",
+						1.5f, 2f,
+						5f, .025f, TOWER_SIZE, 3f, 12f, 20, TOWER_HIT_POINTS,
+						new MountUnitContainerFactory(),
+						new Abilities(Abilities.ATTACK | Abilities.RALLY_TO | Abilities.TARGET),
+						new float[]{0f, 11.5f, 11.5f}, 13f, 2.5f,
+						.95f, 0f, 13f,
+						0f, 0f, 0f,
+						Utils.getBundleString(bundle, "tower"));
 		ProgressForm.progress(1f/num_progress);
 		final float shadow_diameter_warrior = 1.9f;
 		final float shadow_diameter_peon = 1.6f;
 		final float shadow_diameter_chieftain = 2.2f;
 		ProgressForm.progress(1f/num_progress);
-
-		SpriteFile sprite_list_warrior = new SpriteFile("/geometry/vikings/warrior.binsprite",
-																						   Globals.NO_MIPMAP_CUTOFF,
-																						   true, true, true, false);
-		ProgressForm.progress(1f/num_progress);
-
 		SpriteFile sprite_list_chieftain = new SpriteFile("/geometry/vikings/chieftain.binsprite",
 																						Globals.NO_MIPMAP_CUTOFF,
 																						true, true, true, false);
@@ -477,7 +545,11 @@ public final strictfp class RacesResources {
 		ProgressForm.progress(1f/num_progress);
 		SpriteFile sprite_list_native_peon = new SpriteFile("/geometry/natives/peon.binsprite",
 																							   Globals.NO_MIPMAP_CUTOFF,
-																							   true, true, true, false);
+																								 true, true, true, false);
+		ProgressForm.progress(1f/num_progress);
+		SpriteFile sprite_list_warrior = new SpriteFile("/geometry/vikings/warrior.binsprite",
+																							Globals.NO_MIPMAP_CUTOFF,
+																							true, true, true, false);
 		ProgressForm.progress(1f/num_progress);
 		SpriteFile sprite_list_native_warrior = new SpriteFile("/geometry/natives/warrior.binsprite",
 																								  Globals.NO_MIPMAP_CUTOFF,
@@ -488,6 +560,15 @@ public final strictfp class RacesResources {
 																						  true, true, true, false);
 		ProgressForm.progress(1f/num_progress);
 		SpriteFile native_warrior_spear = new SpriteFile("/geometry/natives/spear.binsprite",
+																							Globals.NO_MIPMAP_CUTOFF,
+																							true, true, true, false);
+
+		ProgressForm.progress(1f/num_progress);
+		SpriteFile sprite_list_japanese_warrior = new SpriteFile("/geometry/japanese/warrior.binsprite",
+				Globals.NO_MIPMAP_CUTOFF,
+				true, true, true, false);
+		ProgressForm.progress(1f/num_progress);
+		SpriteFile japanese_warrior_axe = new SpriteFile("/geometry/japanese/axe.binsprite",
 																							Globals.NO_MIPMAP_CUTOFF,
 																							true, true, true, false);
 		ProgressForm.progress(1f/num_progress);
@@ -764,7 +845,24 @@ public final strictfp class RacesResources {
 				viking_magic,
 				new VikingChieftainAI(),
 				"/music/viking.ogg");
-		races = new Race[]{natives_race, vikings_race};
+			Race japanese_race = new Race(japanese_quarters_template,
+					japanese_armory_template,
+					japanese_tower_template,
+					native_warrior_rock_template,
+					native_warrior_iron_template,
+					native_warrior_rubber_template,
+					native_peon_template,
+					native_chieftain_template,
+					queues.register(new SpriteFile("/geometry/japanese/rally_point.binsprite",
+								Globals.NO_MIPMAP_CUTOFF,
+								true, true, true, false)),
+					icons.getNativeIcons(),
+					(Audio)Resources.findResource(new AudioFile("/sfx/attacknotify_native.ogg")),
+					(Audio)Resources.findResource(new AudioFile("/sfx/buildingnotify_native.ogg")),
+					native_magic,
+					new NativeChieftainAI(),
+					"/music/native.ogg");
+		races = new Race[]{natives_race, vikings_race, japanese_race};
 
 		wood_fragment_sprites[0] = queues.register(new SpriteFile("/geometry/misc/wood_2.binsprite",
 						Globals.NO_MIPMAP_CUTOFF,

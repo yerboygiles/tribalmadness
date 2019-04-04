@@ -71,8 +71,8 @@ public final strictfp class RacesResources {
 	private final static ResourceBundle bundle = ResourceBundle.getBundle(RacesResources.class.getName());
 	private final static String[] race_names = new String[]{
             Utils.getBundleString(bundle, "natives"),
-            Utils.getBundleString(bundle, "vikings"),
-            Utils.getBundleString(bundle, "japanese")
+            Utils.getBundleString(bundle, "vikings")/*,
+            Utils.getBundleString(bundle, "japanese")*/
     };
 	private final static int MAX_UNIT_RESOURCES = 1;
 

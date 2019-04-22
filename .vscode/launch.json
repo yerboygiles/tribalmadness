@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ConvertToBinary",
+            "request": "launch",
+            "mainClass": "com.oddlabs.converter2.ConvertToBinary",
+            "projectName": "tribaltrouble-master_b0b97408"
+        }
+    ]
+}

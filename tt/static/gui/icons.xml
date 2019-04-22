@@ -36,7 +36,6 @@
 					 vikings_rally_point_icon,
 					 vikings_magic1_icon,
 					 vikings_magic2_icon,
-
 					 natives_unit_status_icon,
 					 natives_weapon_rock_status_icon,
 					 natives_weapon_iron_status_icon,
@@ -62,7 +61,6 @@
 					 natives_rally_point_icon,
 					 natives_magic1_icon,
 					 natives_magic2_icon,
-
 					 japanese_unit_status_icon,
 					 japanese_weapon_rock_status_icon,
 					 japanese_weapon_iron_status_icon,
@@ -173,17 +171,17 @@
 	<!ELEMENT japanese_build_weapon_rock_icon	(normal, active, disabled)>
 	<!ELEMENT japanese_build_weapon_iron_icon	(normal, active, disabled)>
 	<!ELEMENT japanese_build_weapon_rubber_icon	(normal, active, disabled)>
-	<!ELEMENT japanese_army_icon					(normal, active, disabled)>
-	<!ELEMENT japanese_warrior_rock_icon			(normal, active, disabled)>
-	<!ELEMENT japanese_warrior_iron_icon			(normal, active, disabled)>
+	<!ELEMENT japanese_army_icon				(normal, active, disabled)>
+	<!ELEMENT japanese_warrior_rock_icon		(normal, active, disabled)>
+	<!ELEMENT japanese_warrior_iron_icon		(normal, active, disabled)>
 	<!ELEMENT japanese_warrior_rubber_icon		(normal, active, disabled)>
-	<!ELEMENT japanese_peon_icon					(normal, active, disabled)>
+	<!ELEMENT japanese_peon_icon				(normal, active, disabled)>
 	<!ELEMENT japanese_chieftain_icon			(normal, active, disabled)>
 	<!ELEMENT japanese_transport_icon			(normal, active, disabled)>
 	<!ELEMENT japanese_attack_icon				(normal, active, disabled)>
-	<!ELEMENT japanese_move_icon					(normal, active, disabled)>
+	<!ELEMENT japanese_move_icon				(normal, active, disabled)>
 	<!ELEMENT japanese_gather_repair_icon		(normal, active, disabled)>
-	<!ELEMENT japanese_quarters_icon				(normal, active, disabled)>
+	<!ELEMENT japanese_quarters_icon			(normal, active, disabled)>
 	<!ELEMENT japanese_armory_icon				(normal, active, disabled)>
 	<!ELEMENT japanese_tower_icon				(normal, active, disabled)>
 	<!ELEMENT japanese_tower_exit_icon			(normal, active, disabled)>
@@ -764,6 +762,251 @@
 		</disabled>
 	</natives_magic2_icon>
 
+	<!-- JAPANESE -->
+	<japanese_unit_status_icon>
+		<quad left="0" top="448" right="32" bottom="480"/>
+	</japanese_unit_status_icon>
+	<japanese_weapon_rock_status_icon>
+		<quad left="160" top="448" right="192" bottom="480"/>
+	</japanese_weapon_rock_status_icon>
+	<japanese_weapon_iron_status_icon>
+		<quad left="192" top="448" right="224" bottom="480"/>
+	</japanese_weapon_iron_status_icon>
+	<japanese_weapon_rubber_status_icon>
+		<quad left="224" top="448" right="256" bottom="480"/>
+	</japanese_weapon_rubber_status_icon>
+	<japanese_build_weapons_icon>
+		<normal>
+			<quad left="320" top="0" right="384" bottom="64"/>
+		</normal>
+		<active>
+			<quad left="320" top="64" right="384" bottom="128"/>
+		</active>
+		<disabled>
+			<quad left="320" top="128" right="384" bottom="192"/>
+		</disabled>
+	</japanese_build_weapons_icon>
+	<japanese_build_weapon_rock_icon>
+		<normal>
+			<quad left="0" top="256" right="64" bottom="320"/>
+		</normal>
+		<active>
+			<quad left="0" top="320" right="64" bottom="384"/>
+		</active>
+		<disabled>
+			<quad left="0" top="384" right="64" bottom="448"/>
+		</disabled>
+	</japanese_build_weapon_rock_icon>
+	<japanese_build_weapon_iron_icon>
+		<normal>
+			<quad left="64" top="256" right="128" bottom="320"/>
+		</normal>
+		<active>
+			<quad left="64" top="320" right="128" bottom="384"/>
+		</active>
+		<disabled>
+			<quad left="64" top="384" right="128" bottom="448"/>
+		</disabled>
+	</japanese_build_weapon_iron_icon>
+	<japanese_build_weapon_rubber_icon>
+		<normal>
+			<quad left="128" top="256" right="192" bottom="320"/>
+		</normal>
+		<active>
+			<quad left="128" top="320" right="192" bottom="384"/>
+		</active>
+		<disabled>
+			<quad left="128" top="384" right="192" bottom="448"/>
+		</disabled>
+	</japanese_build_weapon_rubber_icon>
+	<japanese_army_icon>
+		<normal>
+			<quad left="448" top="0" right="512" bottom="64"/>
+		</normal>
+		<active>
+			<quad left="448" top="64" right="512" bottom="128"/>
+		</active>
+		<disabled>
+			<quad left="448" top="128" right="512" bottom="192"/>
+		</disabled>
+	</japanese_army_icon>
+	<japanese_warrior_rock_icon>
+		<normal>
+			<quad left="448" top="256" right="512" bottom="320"/>
+		</normal>
+		<active>
+			<quad left="448" top="320" right="512" bottom="384"/>
+		</active>
+		<disabled>
+			<quad left="448" top="384" right="512" bottom="448"/>
+		</disabled>
+	</japanese_warrior_rock_icon>
+	<japanese_warrior_iron_icon>
+		<normal>
+			<quad left="512" top="256" right="576" bottom="320"/>
+		</normal>
+		<active>
+			<quad left="512" top="320" right="576" bottom="384"/>
+		</active>
+		<disabled>
+			<quad left="512" top="384" right="576" bottom="448"/>
+		</disabled>
+	</japanese_warrior_iron_icon>
+	<japanese_warrior_rubber_icon>
+		<normal>
+			<quad left="576" top="256" right="640" bottom="320"/>
+		</normal>
+		<active>
+			<quad left="576" top="320" right="640" bottom="384"/>
+		</active>
+		<disabled>
+			<quad left="576" top="384" right="640" bottom="448"/>
+		</disabled>
+	</japanese_warrior_rubber_icon>
+	<japanese_peon_icon>
+		<normal>
+			<quad left="384" top="256" right="448" bottom="320"/>
+		</normal>
+		<active>
+			<quad left="384" top="320" right="448" bottom="384"/>
+		</active>
+		<disabled>
+			<quad left="384" top="384" right="448" bottom="448"/>
+		</disabled>
+	</japanese_peon_icon>
+	<japanese_chieftain_icon>
+		<normal>
+			<quad left="256" top="512" right="320" bottom="576"/>
+		</normal>
+		<active>
+			<quad left="256" top="576" right="320" bottom="640"/>
+		</active>
+		<disabled>
+			<quad left="256" top="640" right="320" bottom="704"/>
+		</disabled>
+	</japanese_chieftain_icon>
+	<japanese_transport_icon>
+		<normal>
+			<quad left="576" top="0" right="640" bottom="64"/>
+		</normal>
+		<active>
+			<quad left="576" top="64" right="640" bottom="128"/>
+		</active>
+		<disabled>
+			<quad left="576" top="128" right="640" bottom="192"/>
+		</disabled>
+	</japanese_transport_icon>
+	<japanese_attack_icon>
+		<normal>
+			<quad left="0" top="192" right="64" bottom="256"/>
+		</normal>
+		<active>
+			<quad left="64" top="192" right="128" bottom="256"/>
+		</active>
+		<disabled>
+			<quad left="128" top="192" right="192" bottom="256"/>
+		</disabled>
+	</japanese_attack_icon>
+	<japanese_move_icon>
+		<normal>
+			<quad left="256" top="448" right="320" bottom="512"/>
+		</normal>
+		<active>
+			<quad left="320" top="448" right="384" bottom="512"/>
+		</active>
+		<disabled>
+			<quad left="384" top="448" right="448" bottom="512"/>
+		</disabled>
+	</japanese_move_icon>
+	<japanese_gather_repair_icon>
+		<normal>
+			<quad left="384" top="192" right="448" bottom="256"/>
+		</normal>
+		<active>
+			<quad left="448" top="192" right="512" bottom="256"/>
+		</active>
+		<disabled>
+			<quad left="512" top="192" right="576" bottom="256"/>
+		</disabled>
+	</japanese_gather_repair_icon>
+	<japanese_quarters_icon>
+		<normal>
+			<quad left="0" top="0" right="64" bottom="64"/>
+		</normal>
+		<active>
+			<quad left="0" top="64" right="64" bottom="128"/>
+		</active>
+		<disabled>
+			<quad left="0" top="128" right="64" bottom="192"/>
+		</disabled>
+	</japanese_quarters_icon>
+	<japanese_armory_icon>
+		<normal>
+			<quad left="0" top="512" right="64" bottom="576"/>
+		</normal>
+		<active>
+			<quad left="0" top="576" right="64" bottom="640"/>
+		</active>
+		<disabled>
+			<quad left="0" top="640" right="64" bottom="704"/>
+		</disabled>
+	</japanese_armory_icon>
+	<japanese_tower_icon>
+		<normal>
+			<quad left="128" top="0" right="192" bottom="64"/>
+		</normal>
+		<active>
+			<quad left="128" top="64" right="192" bottom="128"/>
+		</active>
+		<disabled>
+			<quad left="128" top="128" right="192" bottom="192"/>
+		</disabled>
+	</japanese_tower_icon>
+	<japanese_tower_exit_icon>
+		<normal>
+			<quad left="896" top="256" right="960" bottom="320"/>
+		</normal>
+		<active>
+			<quad left="896" top="320" right="960" bottom="384"/>
+		</active>
+		<disabled>
+			<quad left="896" top="384" right="960" bottom="448"/>
+		</disabled>
+	</japanese_tower_exit_icon>
+	<japanese_rally_point_icon>
+		<normal>
+			<quad left="128" top="512" right="192" bottom="576"/>
+		</normal>
+		<active>
+			<quad left="128" top="576" right="192" bottom="640"/>
+		</active>
+		<disabled>
+			<quad left="128" top="640" right="192" bottom="704"/>
+		</disabled>
+	</japanese_rally_point_icon>
+	<japanese_magic1_icon>
+		<normal>
+			<quad left="384" top="512" right="448" bottom="576"/>
+		</normal>
+		<active>
+			<quad left="384" top="576" right="448" bottom="640"/>
+		</active>
+		<disabled>
+			<quad left="384" top="640" right="448" bottom="704"/>
+		</disabled>
+	</japanese_magic1_icon>
+	<japanese_magic2_icon>
+		<normal>
+			<quad left="448" top="512" right="512" bottom="576"/>
+		</normal>
+		<active>
+			<quad left="448" top="576" right="512" bottom="640"/>
+		</active>
+		<disabled>
+			<quad left="448" top="640" right="512" bottom="704"/>
+		</disabled>
+	</japanese_magic2_icon>
+
 	<!-- Watch icons -->
 	<watch>
 		<quad left="0" top="959" right="22" bottom="981"/>
@@ -797,7 +1040,6 @@
 	<infinite>
 		<quad left="768" top="192" right="832" bottom="256"/>
 	</infinite>
-	
 	<notify_arrow head_x="64" head_y="32" end_x="0" end_y="32">
 		<quad left="832" top="192" right="896" bottom="256"/>
 	</notify_arrow>

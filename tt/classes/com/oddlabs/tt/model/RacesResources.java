@@ -71,8 +71,8 @@ public final strictfp class RacesResources {
 	private final static ResourceBundle bundle = ResourceBundle.getBundle(RacesResources.class.getName());
 	private final static String[] race_names = new String[]{
             Utils.getBundleString(bundle, "natives"),
-            Utils.getBundleString(bundle, "vikings")/*,
-            Utils.getBundleString(bundle, "japanese")*/
+            Utils.getBundleString(bundle, "vikings"),
+            Utils.getBundleString(bundle, "japanese")
     };
 	private final static int MAX_UNIT_RESOURCES = 1;
 
@@ -532,7 +532,11 @@ public final strictfp class RacesResources {
 		final float shadow_diameter_peon = 1.6f;
 		final float shadow_diameter_chieftain = 2.2f;
 		ProgressForm.progress(1f/num_progress);
-		SpriteFile sprite_list_chieftain = new SpriteFile("/geometry/vikings/chieftain.binsprite",
+		SpriteFile sprite_list_chieftain = new SpriteFile("/geometry/natives/chieftain.binsprite",
+																							   Globals.NO_MIPMAP_CUTOFF,
+																							   true, true, true, false);
+		ProgressForm.progress(1f/num_progress);
+		SpriteFile sprite_list_japanese_chieftain = new SpriteFile("/geometry/japanese/chieftain.binsprite",
 																						Globals.NO_MIPMAP_CUTOFF,
 																						true, true, true, false);
 		ProgressForm.progress(1f/num_progress);
@@ -568,7 +572,7 @@ public final strictfp class RacesResources {
 				Globals.NO_MIPMAP_CUTOFF,
 				true, true, true, false);
 		ProgressForm.progress(1f/num_progress);
-		SpriteFile japanese_warrior_axe = new SpriteFile("/geometry/japanese/axe.binsprite",
+		SpriteFile japanese_warrior_axe = new SpriteFile("/geometry/japanese/spear.binsprite",
 																							Globals.NO_MIPMAP_CUTOFF,
 																							true, true, true, false);
 		ProgressForm.progress(1f/num_progress);
@@ -610,6 +614,12 @@ public final strictfp class RacesResources {
 			(Audio)Resources.findResource(new AudioFile("/sfx/hit4.ogg")),
 			(Audio)Resources.findResource(new AudioFile("/sfx/hit5.ogg")),
 			(Audio)Resources.findResource(new AudioFile("/sfx/hit6.ogg"))
+		};
+		Audio[] japanese_chieftain_hit_sounds = new Audio[]{
+			(Audio)Resources.findResource(new AudioFile("/sfx/hit3.ogg")),
+			(Audio)Resources.findResource(new AudioFile("/sfx/hit4.ogg")),
+			(Audio)Resources.findResource(new AudioFile("/sfx/hit6.ogg")),
+			(Audio)Resources.findResource(new AudioFile("/sfx/hit7.ogg"))
 		};
 		Audio[] viking_chieftain_hit_sounds = new Audio[]{
 			(Audio)Resources.findResource(new AudioFile("/sfx/hit1.ogg")),
@@ -800,6 +810,25 @@ public final strictfp class RacesResources {
 																  NATIVE_CHIEFTAIN_HIT_POINTS,
 																  .878f, .151f, 2.8f,
 																  40);
+		
+		UnitTemplate japanese_chieftain_template = new UnitTemplate(.4f,
+																  1.4f,
+																  new Abilities(Abilities.ATTACK | Abilities.TARGET | Abilities.MAGIC),
+																  4f,
+																  new InstantHitFactory(3/4f, 0f, 75f/129f, japanese_chieftain_hit_sounds),
+																  queues.register(sprite_list_japanese_chieftain),
+																  shadow_diameter_chieftain,
+															 	  default_shadow_list,
+																  null,
+																  death_native2_sound,
+																  .15f,
+																  new float[]{1.7f},
+																  1f,
+																  0.5f,
+																  Utils.getBundleString(bundle, "chieftain"),
+																  JAPANESE_CHIEFTAIN_HIT_POINTS,
+																  .878f, .151f, 2.8f,
+																  40);
 
 		MagicFactory[] native_magic = new MagicFactory[NUM_MAGIC];
 		native_magic[INDEX_MAGIC_POISON] = new PoisonFogFactory(0.9f, 0f, 0.55f, 26f, .5f, 2f, 20f, 10, 5f, 80f/224f, 163f/224f);
@@ -808,6 +837,10 @@ public final strictfp class RacesResources {
 		MagicFactory[] viking_magic = new MagicFactory[NUM_MAGIC];
 		viking_magic[INDEX_MAGIC_STUN] = new StunFactory(2.57f, 0f, 3.8f, 36f, 30f, 10f, 6f, 57f/159f, 100f/159f);
 		viking_magic[INDEX_MAGIC_BLAST] = new SonicBlastFactory(2.57f, 0f, 3.8f, 36f, 17f, 2f, 150, 30, .8f, 6f, 57f/159f, 100f/159f);
+
+		MagicFactory[] japanese_magic = new MagicFactory[NUM_MAGIC];
+		japanese_magic[INDEX_MAGIC_STUN] = new StunFactory(2.57f, 0f, 3.8f, 36f, 30f, 10f, 6f, 57f/159f, 100f/159f);
+		japanese_magic[INDEX_MAGIC_LIGHTNING] = new LightningCloudFactory(0.9f, 0f, 0.55f, 22f, 1f, 8f, 1f, 30, 18f, 5f, 80f/224f, 163f/224f);
 
 		ProgressForm.progress(1f/num_progress);
 		Icons icons = Icons.getIcons();
@@ -852,14 +885,14 @@ public final strictfp class RacesResources {
 					native_warrior_iron_template,
 					native_warrior_rubber_template,
 					native_peon_template,
-					native_chieftain_template,
+					japanese_chieftain_template,
 					queues.register(new SpriteFile("/geometry/japanese/rally_point.binsprite",
 								Globals.NO_MIPMAP_CUTOFF,
 								true, true, true, false)),
 					icons.getNativeIcons(),
 					(Audio)Resources.findResource(new AudioFile("/sfx/attacknotify_native.ogg")),
 					(Audio)Resources.findResource(new AudioFile("/sfx/buildingnotify_native.ogg")),
-					native_magic,
+					japanese_magic,
 					new NativeChieftainAI(),
 					"/music/native.ogg");
 		races = new Race[]{natives_race, vikings_race, japanese_race};

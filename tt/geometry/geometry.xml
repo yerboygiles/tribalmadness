@@ -483,7 +483,7 @@
 		<sprite name="rubber_resource">
 			<skeleton>japanese/peon/peon_skeleton.xml</skeleton>
 			<model r="90" g="60" b="30">
-				misc/rubber_fragment_japanese.xml
+				misc/rubber_fragment_native.xml
 				<texture name="chicken"/>
 			</model>
 			<animation wpc="1" type="loop">japanese/peon/peon_idle.xml</animation>

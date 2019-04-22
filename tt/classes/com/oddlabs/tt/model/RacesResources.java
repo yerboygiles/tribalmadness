@@ -635,7 +635,6 @@ public final strictfp class RacesResources {
 																	   queues.register(native_warrior_spear, Race.UNIT_WARRIOR_RUBBER),
 																	   spear_throw_sound,
 																		 unit_hit_sounds);
-		
 		WeaponFactory japanese_warrior_rock_weapon = new ThrowingFactory(RockAxeWeapon.class, 0.25f, THROW_RANGE, 29f/58f,
 																	   queues.register(japanese_warrior_axe, Race.UNIT_WARRIOR_ROCK),
 																	   axe_throw_sound,

@@ -8,7 +8,7 @@ import com.oddlabs.tt.form.QuestionForm;
 import com.oddlabs.tt.global.Settings;
 import com.oddlabs.tt.guievent.MouseClickListener;
 import com.oddlabs.tt.render.Renderer;
-import com.oddlabs.regclient.ReflexiveRegistrationClient;
+//import com.oddlabs.regclient.ReflexiveRegistrationClient;
 import com.oddlabs.tt.global.Globals;
 import com.oddlabs.tt.gui.LocalInput;
 import com.oddlabs.tt.util.Utils;

@@ -65,6 +65,7 @@ public final strictfp class RacesResources {
 	public final static int INDEX_MAGIC_STUN = 0;
 	public final static int INDEX_MAGIC_BLAST = 1;
 	public final static float THROW_RANGE = 6f;
+	public final static float SHOOT_RANGE = 9f;
 
 	public final static ResourceDescriptor DEFAULT_SHADOW_DESC = new GeneratorHalos(128, new float[][]{{0f, 0.75f}, {0.5f, 0f}}, new float[][]{{0.40f, 0f}, {0.41f, 1f}, {0.48f, 1f}, {0.49f, 0f}});
 
@@ -303,11 +304,12 @@ public final strictfp class RacesResources {
 		Audio death_native1_sound = (Audio)Resources.findResource(new AudioFile("/sfx/death_native_warrior1.ogg"));
 		Audio death_native2_sound = (Audio)Resources.findResource(new AudioFile("/sfx/death_native_warrior2.ogg"));
 		Audio death_japanese1_sound = (Audio)Resources.findResource(new AudioFile("/sfx/death_native_warrior1.ogg"));
-		Audio death_japanese2_sound = (Audio)Resources.findResource(new AudioFile("/sfx/death_native_warrior2.ogg"));
+		Audio death_japanese2_sound = (Audio)Resources.findResource(new AudioFile("/sfx/death_viking_warrior2.ogg"));
 
 
 		Audio axe_throw_sound = (Audio)Resources.findResource(new AudioFile("/sfx/weapon_axe.ogg"));
 		Audio spear_throw_sound = (Audio)Resources.findResource(new AudioFile("/sfx/weapon_spear.ogg"));
+		Audio crossbow_shoot_sound = (Audio)Resources.findResource(new AudioFile("/sfx/axe_cutting_wood1.ogg"));
 
 		tree_fall_sound = new Audio[2];
 		tree_fall_sound[AbstractTreeGroup.TREE_INDEX] = (Audio)Resources.findResource(new AudioFile("/sfx/felling_tree.ogg"));
@@ -477,56 +479,74 @@ public final strictfp class RacesResources {
 				.95f, 0f, 13f,
 				0f, 0f, 0f,
 				Utils.getBundleString(bundle, "tower"));
-				BuildingTemplate japanese_quarters_template = createBuildingTemplate(
-						queues,
-						Race.BUILDING_QUARTERS,
-						"/geometry/japanese/quarters.binsprite",
-						4f, 8f,
-						"/geometry/japanese/quarters_halfbuilt.binsprite",
-						4f, 6f,
-						"/geometry/japanese/quarters_start.binsprite",
-						5f, 1f,
-						16f, .004f, QUARTERS_SIZE, 6f, 9f, 30, QUARTERS_HIT_POINTS,
-						new ReproduceUnitContainerFactory(),
-						new Abilities(Abilities.REPRODUCE | Abilities.RALLY_TO | Abilities.TARGET),
-						new float[]{0f, 1f, 3f}, 0f, 6f,
-						-1.15f, -.77f, 11f,
-						0f, 0f, 0f,
-						Utils.getBundleString(bundle, "quarters"));
-				ProgressForm.progress(1f/num_progress);
-				BuildingTemplate japanese_armory_template = createBuildingTemplate(
-						queues,
-						Race.BUILDING_ARMORY,
-						"/geometry/japanese/armory.binsprite",
-						4f, 8f,
-						"/geometry/japanese/armory_halfbuilt.binsprite",
-						4f, 6f,
-						"/geometry/japanese/armory_start.binsprite",
-						5f, 1f,
-						16f, .004f, ARMORY_SIZE, 6f, 9f, 30, ARMORY_HIT_POINTS,
-						new WorkerUnitContainerFactory(),
-						new Abilities(Abilities.SUPPLY_CONTAINER | Abilities.BUILD_ARMIES | Abilities.RALLY_TO | Abilities.TARGET),
-						new float[]{0f, 1f, 3f}, 0f, 6f,
-						0f, -.4f, 12f,
-						0f, -1f, 11.5f,
-						Utils.getBundleString(bundle, "armory"));
-				ProgressForm.progress(1f/num_progress);
-				BuildingTemplate japanese_tower_template = createBuildingTemplate(
-						queues,
-						Race.BUILDING_TOWER,
-						"/geometry/japanese/tower.binsprite",
-						1f, 14f,
-						"/geometry/japanese/tower_halfbuilt.binsprite",
-						1f, 14f,
-						"/geometry/japanese/tower_start.binsprite",
-						1.5f, 2f,
-						5f, .025f, TOWER_SIZE, 3f, 12f, 20, TOWER_HIT_POINTS,
-						new MountUnitContainerFactory(),
-						new Abilities(Abilities.ATTACK | Abilities.RALLY_TO | Abilities.TARGET),
-						new float[]{0f, 11.5f, 11.5f}, 13f, 2.5f,
-						.95f, 0f, 13f,
-						0f, 0f, 0f,
-						Utils.getBundleString(bundle, "tower"));
+		ProgressForm.progress(1f/num_progress);
+		BuildingTemplate japanese_tower_template = createBuildingTemplate(
+				queues,
+				Race.BUILDING_TOWER,
+				"/geometry/japanese/tower.binsprite",
+				1f, 14f,
+				"/geometry/japanese/tower_halfbuilt.binsprite",
+				1f, 14f,
+				"/geometry/natives/tower_start.binsprite",
+				1.5f, 2f,
+				5f, .025f, TOWER_SIZE, 3f, 12f, 20, TOWER_HIT_POINTS,
+				new MountUnitContainerFactory(),
+				new Abilities(Abilities.ATTACK | Abilities.RALLY_TO | Abilities.TARGET | Abilities.SUPPLY_CONTAINER),
+				new float[]{0f, 11.5f, 11.5f}, 13f, 2.5f,
+				.95f, 0f, 13f,
+				0f, 0f, 0f,
+				Utils.getBundleString(bundle, "tower"));
+		ProgressForm.progress(1f/num_progress);
+		BuildingTemplate japanese_quarters_template = createBuildingTemplate(
+				queues,
+				Race.BUILDING_QUARTERS,
+				"/geometry/japanese/quarters.binsprite",
+				4f, 8f,
+				"/geometry/japanese/quarters_halfbuilt.binsprite",
+				4f, 6f,
+				"/geometry/japanese/quarters_start.binsprite",
+				5f, 1f,
+				16f, .004f, QUARTERS_SIZE, 6f, 9f, 30, QUARTERS_HIT_POINTS,
+				new ReproduceUnitContainerFactory(),
+				new Abilities(Abilities.REPRODUCE | Abilities.RALLY_TO | Abilities.TARGET),
+				new float[]{0f, 1f, 3f}, 0f, 6f,
+				-1.15f, -.77f, 11f,
+				0f, 0f, 0f,
+				Utils.getBundleString(bundle, "quarters"));
+		ProgressForm.progress(1f/num_progress);
+		BuildingTemplate japanese_armory_template = createBuildingTemplate(
+				queues,
+				Race.BUILDING_ARMORY,
+				"/geometry/japanese/armory.binsprite",
+				4f, 8f,
+				"/geometry/japanese/armory_halfbuilt.binsprite",
+				4f, 6f,
+				"/geometry/japanese/armory_start.binsprite",
+				5f, 1f,
+				16f, .004f, ARMORY_SIZE, 6f, 9f, 30, ARMORY_HIT_POINTS,
+				new WorkerUnitContainerFactory(),
+				new Abilities(Abilities.SUPPLY_CONTAINER | Abilities.BUILD_ARMIES | Abilities.RALLY_TO | Abilities.TARGET),
+				new float[]{0f, 1f, 3f}, 0f, 6f,
+				0f, -.4f, 12f,
+				0f, -1f, 11.5f,
+				Utils.getBundleString(bundle, "armory"));
+		ProgressForm.progress(1f/num_progress);
+		BuildingTemplate japanese_tower_template = createBuildingTemplate(
+				queues,
+				Race.BUILDING_TOWER,
+				"/geometry/japanese/tower.binsprite",
+				1f, 14f,
+				"/geometry/japanese/tower_halfbuilt.binsprite",
+				1f, 14f,
+				"/geometry/japanese/tower_start.binsprite",
+				1.5f, 2f,
+				5f, .025f, TOWER_SIZE, 3f, 12f, 20, TOWER_HIT_POINTS,
+				new MountUnitContainerFactory(),
+				new Abilities(Abilities.ATTACK | Abilities.RALLY_TO | Abilities.TARGET),
+				new float[]{0f, 11.5f, 11.5f}, 13f, 2.5f,
+				.95f, 0f, 13f,
+				0f, 0f, 0f,
+				Utils.getBundleString(bundle, "tower"));
 		ProgressForm.progress(1f/num_progress);
 		final float shadow_diameter_warrior = 1.9f;
 		final float shadow_diameter_peon = 1.6f;
@@ -550,6 +570,10 @@ public final strictfp class RacesResources {
 		SpriteFile sprite_list_native_peon = new SpriteFile("/geometry/natives/peon.binsprite",
 																							   Globals.NO_MIPMAP_CUTOFF,
 																								 true, true, true, false);
+																								 ProgressForm.progress(1f/num_progress);
+		SpriteFile sprite_list_japanese_peon = new SpriteFile("/geometry/japanese/peon.binsprite",
+																								Globals.NO_MIPMAP_CUTOFF,
+																								true, true, true, false);
 		ProgressForm.progress(1f/num_progress);
 		SpriteFile sprite_list_warrior = new SpriteFile("/geometry/vikings/warrior.binsprite",
 																							Globals.NO_MIPMAP_CUTOFF,
@@ -559,6 +583,10 @@ public final strictfp class RacesResources {
 																								  Globals.NO_MIPMAP_CUTOFF,
 																								  true, true, true, false);
 		ProgressForm.progress(1f/num_progress);
+		SpriteFile sprite_list_japanese_warrior = new SpriteFile("/geometry/japanese/warrior.binsprite",
+																									Globals.NO_MIPMAP_CUTOFF,
+																									true, true, true, false);
+		ProgressForm.progress(1f/num_progress);
 		SpriteFile viking_warrior_axe = new SpriteFile("/geometry/vikings/axe.binsprite",
 																						  Globals.NO_MIPMAP_CUTOFF,
 																						  true, true, true, false);
@@ -566,11 +594,10 @@ public final strictfp class RacesResources {
 		SpriteFile native_warrior_spear = new SpriteFile("/geometry/natives/spear.binsprite",
 																							Globals.NO_MIPMAP_CUTOFF,
 																							true, true, true, false);
-
 		ProgressForm.progress(1f/num_progress);
-		SpriteFile sprite_list_japanese_warrior = new SpriteFile("/geometry/japanese/warrior.binsprite",
-				Globals.NO_MIPMAP_CUTOFF,
-				true, true, true, false);
+		SpriteFile japanese_warrior_spear = new SpriteFile("/geometry/japanese/spear.binsprite",
+																							Globals.NO_MIPMAP_CUTOFF,
+																							true, true, true, false);
 		ProgressForm.progress(1f/num_progress);
 		SpriteFile japanese_warrior_axe = new SpriteFile("/geometry/japanese/spear.binsprite",
 																							Globals.NO_MIPMAP_CUTOFF,
@@ -607,6 +634,19 @@ public final strictfp class RacesResources {
 		WeaponFactory native_warrior_rubber_weapon = new ThrowingFactory(RubberSpearWeapon.class, 0.95f, THROW_RANGE, 46f/100f,
 																	   queues.register(native_warrior_spear, Race.UNIT_WARRIOR_RUBBER),
 																	   spear_throw_sound,
+																		 unit_hit_sounds);
+		
+		WeaponFactory japanese_warrior_rock_weapon = new ThrowingFactory(RockAxeWeapon.class, 0.25f, THROW_RANGE, 29f/58f,
+																	   queues.register(japanese_warrior_axe, Race.UNIT_WARRIOR_ROCK),
+																	   axe_throw_sound,
+																	   unit_hit_sounds);
+		WeaponFactory japanese_warrior_iron_weapon = new ThrowingFactory(IronAxeWeapon.class, 0.60f, THROW_RANGE, 29f/58f,
+																	   queues.register(japanese_warrior_axe, Race.UNIT_WARRIOR_IRON),
+																	   axe_throw_sound,
+																	   unit_hit_sounds);
+		WeaponFactory japanese_warrior_rubber_weapon = new ThrowingFactory(RubberCrossbowWeapon.class, 1f, SHOOT_RANGE, 29f/58f,
+																	   queues.register(japanese_warrior_spear, Race.UNIT_WARRIOR_RUBBER),
+																	   crossbow_shoot_sound,
 																	   unit_hit_sounds);
 
 		Audio[] native_chieftain_hit_sounds = new Audio[]{

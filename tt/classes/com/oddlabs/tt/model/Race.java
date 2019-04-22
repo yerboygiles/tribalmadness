@@ -10,6 +10,7 @@ public final strictfp class Race {
 	public final static int BUILDING_QUARTERS = 0;
 	public final static int BUILDING_ARMORY = 1;
 	public final static int BUILDING_TOWER = 2;
+	public final static int BUILDING_BUNKER = 3;
 
 	public final static int NUM_BUILDINGS = 3;
 

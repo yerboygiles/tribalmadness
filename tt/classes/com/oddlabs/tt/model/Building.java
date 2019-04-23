@@ -463,6 +463,9 @@ public final strictfp class Building extends Selectable implements Occupant {
 					deploy_containers[KEY_DEPLOY_PEON_HARVEST_RUBBER] = peon_harvest_rubber_container;
 					deploy_containers[KEY_DEPLOY_PEON_TRANSPORT_RUBBER] = peon_transport_rubber_container;
 				}
+				else if (getAbilities.hasAbilities(Abilities.SUPPLY_CONTAINER_ROCK)){
+					
+				}
 				else if (getAbilities().hasAbilities(Abilities.REPRODUCE)) {
 					chieftain_container = new ChieftainContainer(this);
 					DeployContainer peon_container = new DeployContainer(this, .5f, KEY_DEPLOY_PEON, null);

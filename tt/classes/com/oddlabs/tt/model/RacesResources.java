@@ -480,7 +480,7 @@ public final strictfp class RacesResources {
 				0f, 0f, 0f,
 				Utils.getBundleString(bundle, "tower"));
 		ProgressForm.progress(1f/num_progress);
-		BuildingTemplate japanese_tower_template = createBuildingTemplate(
+		BuildingTemplate japanese_bunker_template = createBuildingTemplate(
 				queues,
 				Race.BUILDING_TOWER,
 				"/geometry/japanese/tower.binsprite",
